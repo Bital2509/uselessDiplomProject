@@ -1,0 +1,168 @@
+@charset "UTF-8";
+/* Пременяеться ко всему на странице*/
+* {
+  font-family: "Open Sans";
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+/* Пременяеться ко всему на странице*/
+html, body {
+  background: #E0E0E0;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  background: #BDBDBD;
+  padding: 0 24px;
+}
+header img {
+  height: 80px;
+}
+header nav {
+  width: 35%;
+  display: flex;
+  justify-content: space-between;
+}
+header nav a {
+  font-weight: bold;
+  font-size: 24px;
+  color: black;
+  box-shadow: 0 0 0 0 white;
+  transition: all 0.5s ease;
+}
+header nav a:hover {
+  box-shadow: 0 5px 0 0 white;
+  transition: all 0.5s ease;
+}
+header .auth {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+}
+header .auth button {
+  padding: 6px 12px;
+  border-radius: 15px;
+  border: 1px black solid;
+}
+
+.login {
+  width: 100%;
+  height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+.login label {
+  margin: 6px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login_active {
+  height: 150px;
+  margin-bottom: 24px;
+  transition: all 0.5s ease;
+}
+
+.registration {
+  width: 100%;
+  height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+.registration label {
+  margin: 6px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.registration_active {
+  height: 200px;
+  margin-bottom: 24px;
+  transition: all 0.5s ease;
+}
+
+main {
+  min-height: 90%;
+  padding-bottom: 90px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-column-gap: 12px;
+  grid-row-gap: 12px;
+  padding: 12px;
+}
+
+.card {
+  grid-column-end: span 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px black solid;
+  border-radius: 15px;
+  padding: 12px;
+}
+.card img {
+  width: 100%;
+  object-fit: contain;
+  height: 200px;
+}
+.card button {
+  width: 100%;
+  margin-top: auto;
+}
+.card input {
+  display: none;
+}
+
+.block {
+  grid-column-end: span 12;
+}
+
+.addItem {
+  margin: 0 auto;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.addItem label {
+  width: 80%;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 12px 0;
+}
+.addItem label input {
+  width: 100%;
+}
+
+footer {
+  position: inherit;
+  bottom: 0;
+  left: 0;
+  height: 100px;
+  width: 100%;
+  background: #828282;
+  margin-top: -100px;
+}
+
+/*# sourceMappingURL=style.css.map */
