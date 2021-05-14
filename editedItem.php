@@ -6,7 +6,8 @@ $user = [];
 if (isset($_SESSION['logged_user'])) {
     $user = $_SESSION['logged_user'];
 }
-
+$card = R::findOne('item', 'id = ?', [$_SESSION['edited_item']]);
+unset($_SESSION['edited_item']);
 if (isset($data['exit'])) {
     unset($_SESSION['logged_user']);
     echo "<script>window.location.replace('/');</script>";
@@ -77,25 +78,18 @@ if (isset($data['exit'])) {
 </form>
 <main>
     <div class="container">
-        <?php
-        $itemCard = R::findAll('basket');
-        foreach ($itemCard as $item) {
-            if ($item->user === $user->id) {
-                ?>
-                <div class="card">
-                    <form method="post" action="rout/buy.php">
-                        <img src="<?php echo $item->img ?>" alt="">
-                        <input type="text" value="<?php echo $item->img ?>" name="img">
-                        <h3 class="card-title"><?php echo $item->title ?></h3>
-                        <input type="text" value="<?php echo $item->title ?>" name="title">
-                        <button name="buy">Оплатить <?php echo $item->prise ?></button>
-                        <button name="deleted" value="<?php echo $item->id?>">Удалить из карзины</button>
-                    </form>
-                </div>
-                <?php
-            }
-        }
-        ?>
+        <form class="block" method="post" action="rout/editedItem.php">
+            <input type="text" value="<?php echo $card->id; ?>" name="id" style="display: none">
+            <label for="img">
+                Images
+                <input type="text" placeholder="<?php echo $card->img; ?>" name="img" id="img" value="<?php echo $card->img; ?>">
+            </label>
+            <label for="title">
+                Title
+                <input type="text" placeholder="<?php echo $card->title; ?>" name="title" id="title" value="<?php echo $card->title; ?>">
+            </label>
+            <button>Save</button>
+        </form>
     </div>
 </main>
 <footer></footer>

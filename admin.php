@@ -86,6 +86,10 @@ if (isset($data['exit'])) {
                 Title card
                 <input type="text" id="title" name="title">
             </label>
+            <label for="prise">
+                Title card
+                <input type="number" id="prise" name="prise">
+            </label>
             <button>Add Card</button>
         </form>
     </div>

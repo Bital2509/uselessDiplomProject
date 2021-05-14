@@ -5,6 +5,7 @@ $data = $_POST;
 $user = [];
 if (isset($_SESSION['logged_user'])) {
     $user = $_SESSION['logged_user'];
+    $priseBasket = R::findAll('basket', 'user = ?', [$user->id]);
 }
 
 if (isset($data['exit'])) {
@@ -38,6 +39,13 @@ if (isset($data['exit'])) {
     </nav>
     <?php if (!empty($user)) { ?>
         <form class="auth" method="post">
+            <?php
+            $sum = [];
+            foreach ($priseBasket as $item) { ?>
+                <? array_push($sum, $item->prise) ?>
+            <?php }
+            echo array_sum($sum);
+            ?>
             Здравствуй <?php echo $user->name ?>
             <button name="exit">Выход</button>
         </form>
@@ -87,7 +95,12 @@ if (isset($data['exit'])) {
                     <input type="text" value="<?php echo $item->img ?>" name="img">
                     <h3 class="card-title"><?php echo $item->title ?></h3>
                     <input type="text" value="<?php echo $item->title ?>" name="title">
-                    <button>Купить</button>
+                    <input type="text" value="<?php echo $item->prise ?>" name="prise">
+                    <button name="buy" value="<?php echo $item->id ?>">Купить за <?php echo $item->prise ?></button>
+                    <?php if ($user->group === '0') { ?>
+                        <button name="edited" value="<?php echo $item->id ?>">Редактировать</button>
+                        <button name="deleted" value="<?php echo $item->id ?>">Удалить</button>
+                    <?php } ?>
                 </form>
             </div>
             <?php
